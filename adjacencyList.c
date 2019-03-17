@@ -1,3 +1,12 @@
+/**
+ * 
+ *  Created by Alexander Mark Thompson
+ * 
+ *  File to handle adjacency list creation, and handle operations
+ *  done on the lists.
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
  

@@ -1,37 +1,72 @@
+/**
+ * 
+ *  Created By Alexander Mark Thompson
+ * 
+ *  Main file for connect four game.
+ *  
+ *  Game modes:
+ *      - Player versus Player
+ *      - PLayer versus Computer
+ *      - Instructions
+ * 
+ */
+
 #include "adjacencyList.c"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include "board.c"
+#include "time.h"
 
-void openingScreen() {
-    printf("                              Welcome to connect four\n");              //WELCOME MESSAGE
-    sleep(2);
-    for(int k=0;k<3;k++)printf("\n");
+//////////////////////////////////////////////////
+//             Main Menu Function
+//      
+//   Returns the choice from the menu options
+//////////////////////////////////////////////////
+int mainMenu() {
+
     int choice;
-    int width;
-    int height;
-    printf("                                   1-Single Player\n"                ////////////////////////////
-           "                                   ----------  \n"              //                          //
-          "                                   2-Multiplayer\n"              //    MAIN MENU            //
+
+    printf(           
+          "                                   1-Player v Player\n"              //    MAIN MENU            //
           "                                   -------------\n"              ////////////////////////////
-          "                                   3-Player v Computer\n"
+          "                                   2-Player v Computer\n"
           "                                   -----------\n"
-          "                                   4-instruction\n"
+          "                                   3-instruction\n"
           "                                   -------------      "
           "                                   \n\n\n");
 
     printf("Please enter a number from the choices above: ");
     scanf("%d", &choice);
-    printf("\n\n");
-    if(choice == 1 || choice == 2 || choice == 3)
-    {
-        printf("How many columns do you want? ");
-        scanf("%d", &width);
 
-        printf("How many rows do you want to use? ");
-        scanf("%d", &height);
+    return choice;
+}
+
+////////////////////////////////////////////////////////
+//   Function to handle the beginning remarks,
+//   as well as handling when the game modes
+//   are selected.
+////////////////////////////////////////////////////////
+void openingScreen() {
+    printf("                              Welcome to connect four\n");              //WELCOME MESSAGE
+    sleep(2);
+    for(int k=0;k<3;k++)printf("\n");
+    int width;
+    int height;
+    int min = 1;
+    int max = 46;
+
+    time_t t;
+    srand((unsigned) time(&t));
+
+    width = (rand() % (max+1)) + min;
+    height = width - 1;
+    
+    int ans = mainMenu();
+    printf("\n\n");
+    if(ans == 1 || ans == 2)
+    {
         displayBoard(width, height);
     } 
     else
@@ -42,16 +77,19 @@ void openingScreen() {
         addEdge(graph, 1, 2);
         addEdge(graph, 1, 4);
         addEdge(graph, 1, 3);
-        addEdge(graph, 2, 4);
+        addEdge(graph, 5, 4);
         addEdge(graph, 3, 4);
-        addEdge(graph, 4, 6);
+        addEdge(graph, 8, 6);
         addEdge(graph, 5, 1);
-        addEdge(graph, 5, 6);
+        addEdge(graph, 2, 6);
     
         printGraph(graph);
     }
 }
 
+////////////////////////////////////////////////
+// Main Function
+////////////////////////////////////////////////
 int main()
 {
     system("cls||clear");
