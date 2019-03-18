@@ -11,12 +11,13 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include "board.h"
 
 // int isEmpty() {
 
 // }
 
-void displayBoard(int width, int height){
+void displayBoard(int column, int width, int height){
 	for(int a = 1; a < height; a++)
 	{
         printf("|");
@@ -29,7 +30,14 @@ void displayBoard(int width, int height){
         printf("|");
         for(int b = 1; b <= width; b++)
         {
-            printf("    |");
+            if(column == b && a == (height-1))
+            {
+                printf(" X  |");
+            }
+            else
+            {
+                printf("    |");   
+            }
         }
         printf("\n");
 	}
