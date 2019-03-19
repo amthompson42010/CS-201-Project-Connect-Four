@@ -19,27 +19,39 @@ void checkWin()
 /////////////////////////////////////////////////
 void pvp(int width, int height)
 {
-    int column;
-    displayBoard(0, width, height);
+    int column[2];
+    int ans;
+    int ans2;
+    int inital[2];
+
+    displayBoard(inital, width, height);
     printf("Please enter a column that you would like to drop your piece in from the options above:  ");
-    scanf("%d", &column);
+    scanf("%d", &ans);
+    column[0] = ans;
     system("clear");
     printf("\n\n");
     
+    displayBoard(column, width, height);
+    printf("Please enter a column that you would like to drop your piece in from the options above:  ");
+    scanf("%d", &ans2);
+    system("clear");
+    printf("\n\n");
+    column[1] = ans2;
+    printf("%d %d", column[0], column[1]);
     displayBoard(column, width, height);
 }
 
 ////////////////////////////////////////////////
 //    Player versus Computer
 ////////////////////////////////////////////////
-void pvc(int width, int height)
-{
-    int column;
-    displayBoard(0, width, height);
-    printf("Please enter a column that you would like to drop your piece in from the options above:  ");
-    scanf("%d", &column);
-    displayBoard(column, width, height);
-}
+// void pvc(int width, int height)
+// {
+//     // int column;
+//     // displayBoard(0, width, height);
+//     // printf("Please enter a column that you would like to drop your piece in from the options above:  ");
+//     // scanf("%d", &column);
+//     // displayBoard(column, width, height);
+// }
 
 ////////////////////////////////////////////////
 //    Game Instructions

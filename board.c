@@ -17,7 +17,8 @@
 
 // }
 
-void displayBoard(int column, int width, int height){
+void displayBoard(int column[], int width, int height){
+    int size = sizeof(&column);
 	for(int a = 1; a < height; a++)
 	{
         printf("|");
@@ -30,14 +31,19 @@ void displayBoard(int column, int width, int height){
         printf("|");
         for(int b = 1; b <= width; b++)
         {
-            if(column == b && a == (height-1))
+            if(size > 0)
             {
-                printf(" X  |");
+                for(int c = 0; c <= size; c++)
+                {
+                    if(column[c] == b && a == (height-1))
+                    {
+                        printf(" X ");
+                    }
+                }
             }
-            else
-            {
-                printf("    |");   
-            }
+           
+            printf("    |");
+            
         }
         printf("\n");
 	}

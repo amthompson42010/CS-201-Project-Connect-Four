@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 
-extern void displayBoard(int column, int width, int height);
+extern void displayBoard(int column[], int width, int height);
 
 #endif

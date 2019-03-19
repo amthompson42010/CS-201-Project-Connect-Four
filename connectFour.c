@@ -54,13 +54,13 @@ void mainRun() {
     for(int k=0;k<3;k++)printf("\n");
     int width;
     int height;
-    int min = 1;
+    int min = 4;
     int max = 46;
 
     time_t t;
     srand((unsigned) time(&t));
 
-    width = (rand() % (max+1)) + min;
+    width = (rand() % (max+1)) + (min-4);
     height = width - 1;
     
     int ans = mainMenu();
@@ -71,7 +71,7 @@ void mainRun() {
     }
     else if(ans == 2)
     {
-        pvc(width, height);
+        //pvc(width, height);
     }
     else
     {
