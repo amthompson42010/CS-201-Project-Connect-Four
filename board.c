@@ -13,69 +13,50 @@
 #include <string.h>
 #include "board.h"
 
-// int isEmpty() {
-
-// }
-
-void displayBoard(int column[], int width, int height){
-    int size = sizeof(&column);
-	for(int a = 1; a < height; a++)
-	{
-        printf("|");
-        for(int b = 1; b <= width; b++)
-        {
-            printf(" -- ");
-            printf("|");
-        }
-        printf("\n");
-        printf("|");
-        for(int b = 1; b <= width; b++)
-        {
-            if(size > 0)
-            {
-                for(int c = 0; c <= size; c++)
-                {
-                    if(column[c] == b && a == (height-1))
-                    {
-                        printf(" X ");
-                    }
-                }
-            }
-           
-            printf("    |");
-            
-        }
-        printf("\n");
-	}
-    for(int b = 1; b <= width; b++)
+char **createBoard(int width, int height)
+{
+    char **board = malloc(height * sizeof(char *));
+    for(int i = 0; i < height; i++)
     {
-        printf("-----");
+        board[i] = malloc(width * 3 * sizeof(char));
     }
-    printf("-");
+
+    int count = 0;
+    for(int i = 0; i < height; i++)
+    {
+        for(int j = 0; j < (width * 3); j++)
+        {
+            if(count == 0)
+            {
+                board[i][j] = '[';
+                count++;
+            }
+            else if(count == 1)
+            {
+                board[i][j] = ' ';
+                count++;
+            }
+            else
+            {
+                board[i][j] = ']';
+                count = 0;
+            }
+        }
+    }
+
+    return board;
+}
+
+void displayBoard(char **board, int width, int height){
     printf("\n");
-
-    int currWidth = width;
-    if(width != 0 || height != 0)
+    for(int i = 0; i < height; i++)
     {
-        printf("  1  ");
-        currWidth--;
-        for(int c = 2; c <= 9; c++)
+        for(int j = 0; j < width * 3; j++)
         {
-            if(currWidth != 0)
-            {
-                printf("  %d  ", c);
-                currWidth--;
-            }
+            printf("%c", board[i][j]);
         }
 
-        currWidth--;
-        if(currWidth != 0)
-        {
-            for(int d = 10; d <= width; d++)
-            {
-                printf("  %d ", d);
-            }
-        }
+        printf("\n");
     }
-    printf("\n\n\n");
+    printf("\n\n");
 }

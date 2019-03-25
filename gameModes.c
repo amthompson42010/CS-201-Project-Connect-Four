@@ -9,36 +9,12 @@
 #include "adjacencyList.h"
 #include "board.h"
 
-void checkWin()
-{
-    
-}
-
 /////////////////////////////////////////////////
 //    Player versus Player
 /////////////////////////////////////////////////
-void pvp(int width, int height)
+void pvp(char **board, int width, int height)
 {
-    int column[2];
-    int ans;
-    int ans2;
-    int inital[2];
-
-    displayBoard(inital, width, height);
-    printf("Please enter a column that you would like to drop your piece in from the options above:  ");
-    scanf("%d", &ans);
-    column[0] = ans;
-    system("clear");
-    printf("\n\n");
-    
-    displayBoard(column, width, height);
-    printf("Please enter a column that you would like to drop your piece in from the options above:  ");
-    scanf("%d", &ans2);
-    system("clear");
-    printf("\n\n");
-    column[1] = ans2;
-    printf("%d %d", column[0], column[1]);
-    displayBoard(column, width, height);
+    displayBoard(board, width, height);
 }
 
 ////////////////////////////////////////////////

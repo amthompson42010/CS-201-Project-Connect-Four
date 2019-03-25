@@ -13,9 +13,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include "time.h"
 #include "gameModes.h"
 #include "menu.h"
 
@@ -60,10 +57,21 @@ void displayScore(int scoreOne, int scoreTwo, int gameMode)
 ////////////////////////////////////////////////////////
 void mainRun(struct Modes *newMode) {
     welcomeScreen();              
-    sleep(1);
+
     for(int k=0;k<3;k++)printf("\n");
 
     getScreenWidth(newMode);
     getScreenHeight(newMode);
     mainModeOptions(newMode);
+
+    char **board = createBoard(newMode->width, newMode->height);
+
+    if(newMode->mode == 1)
+    {
+        pvp(board, newMode->width, newMode->height);
+    }
+    else
+    {
+        printf("UH OH");
+    }
 }

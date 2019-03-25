@@ -81,12 +81,12 @@ void getScreenWidth(struct Modes *newMode) {
         }
         else if(x >= 4)
         {
-            printf("Cool");
+            setScreenWidth(newMode, x);
         }
         else
         {
             printf("You entered a negative number, please enter a positive number.");
-            setScreenWidth(newMode, x);
+            getScreenWidth(newMode);
         }
     }
     else
@@ -113,6 +113,8 @@ void getScreenHeight(struct Modes *newMode)
 
     printf("Please enter the height of the board that you would like: ");
     scanf("%d", &y);
+    system("clear");
+    printf("\n\n");
 
     // Check to make sure the user input is a number and not a string.
     if(y != 0)

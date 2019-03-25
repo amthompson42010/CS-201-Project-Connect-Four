@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 
-extern void displayBoard(int column[], int width, int height);
+extern char **createBoard(int width, int height);
+extern void displayBoard(char **board, int width, int height);
 
 #endif
