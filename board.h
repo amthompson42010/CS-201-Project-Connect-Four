@@ -1,3 +1,11 @@
+/**
+ * 
+ *  Created by Alexander Mark Thompson
+ * 
+ *  Header for the board.c file.
+ * 
+ */
+
 #ifndef BOARD_H_INCLUDED
 #define BOARD_H_INCLUDED
 

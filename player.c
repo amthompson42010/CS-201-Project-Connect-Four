@@ -8,9 +8,12 @@
 
 #include "player.h"
 
-char* allocatePlayerMove(int x)
+newPlayer* createPlayer()
 {
-    char* move = malloc(x * 3 * sizeof(char));
+    struct newPlayer* player = malloc(sizeof(struct newPlayer));
+    player->lastColumn = 0;
+    player->lastRow = 0;
+    player->score = 0;
 
     return player;
 }
