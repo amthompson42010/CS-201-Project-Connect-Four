@@ -10,17 +10,20 @@
 #define PLAYER_H_INCLUDED
 
 typedef struct newPlayer {
-    char move;
+    char *move;
     char playerSymbol;
     int score;
 } newPlayer;
 
-extern newPlayer* createPlayer();
+extern newPlayer* createPlayer(int x);
 extern int getScore(struct newPlayer* player);
 extern void setScore(struct newPlayer* player, int score);
-extern void getPlayerMove(struct newPlayer* player);
-extern void setPlayerMove(char move, int x, char playerSymbol);
+extern char *getPlayerMove(struct newPlayer* player);
+extern void setPlayerMove(char *move, int x, char playerSymbol);
 extern void getPlayerSymbol(struct newPlayer* player);
 extern void setPlayerSymbol(struct newPlayer* player, int playerNum);
+extern void printMove(char *move, int x);
+extern void updateMove(char *move, int currLocation, int newLocation, char playerSymbol);
+
 
 #endif

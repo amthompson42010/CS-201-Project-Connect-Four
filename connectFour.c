@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include "gameModes.h"
 #include "menu.h"
+#include "player.h"
 
 void mainRun(struct Modes *newMode);
 
@@ -29,13 +30,6 @@ int main()
     mainRun(newMode);
  
     return 0;
-}
-
-void printHeader(int whatPlayer)
-{
-    // Make sure to clear screen first
-    printf("Enter the number of the column that you would like to drop your piece in.");
-    printf("Player %d's turn.\n\n", whatPlayer);
 }
 
 void displayScore(int scoreOne, int scoreTwo, int gameMode)
@@ -66,9 +60,11 @@ void mainRun(struct Modes *newMode) {
 
     char **board = createBoard(newMode->width, newMode->height);
 
+    newPlayer *player = createPlayer(newMode->width);
+
     if(newMode->mode == 1)
     {
-        pvp(board, newMode->width, newMode->height);
+        pvp(board, newMode->width, newMode->height, player);
     }
     else
     {

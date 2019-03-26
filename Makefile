@@ -1,12 +1,12 @@
-OBJSS = connectFour.o gameModes.o board.o adjacencyList.o menu.o
+OBJSS = connectFour.o gameModes.o board.o adjacencyList.o menu.o player.o
 
-play: $(OBJSS)
-	gcc -Wall -Wextra -g -o play $(OBJSS)
+playGame: $(OBJSS)
+	gcc -Wall -Wextra -g -o playGame $(OBJSS)
 
-connectFour.o: connectFour.c gameModes.h menu.h
+connectFour.o: connectFour.c gameModes.h menu.h player.h
 	gcc -Wall -Wextra -g -c connectFour.c
 
-gameModes.o: gameModes.c gameModes.h board.c adjacencyList.c
+gameModes.o: gameModes.c gameModes.h board.c adjacencyList.c player.h
 	gcc -Wall -Wextra -g -c gameModes.c
 
 board.o: board.c board.h adjacencyList.c
@@ -17,6 +17,9 @@ adjacencyList.o: adjacencyList.c adjacencyList.h
 
 menu.o: menu.c menu.h
 	gcc -Wall -Wextra -g -c menu.c
+
+player.o: player.c player.h
+	gcc -Wall -Wextra -g -c player.c
 
 clean:
 	rm -f *.o

@@ -8,12 +8,14 @@
 
 #include "adjacencyList.h"
 #include "board.h"
+#include "player.h"
 
 /////////////////////////////////////////////////
 //    Player versus Player
 /////////////////////////////////////////////////
-void pvp(char **board, int width, int height)
+void pvp(char **board, int width, int height, struct newPlayer *player)
 {
+    printMove(player->move, width);
     displayBoard(board, width, height);
 }
 

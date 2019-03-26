@@ -11,6 +11,7 @@
 
 #include "adjacencyList.h"
 #include "board.h"
+#include "player.h"
 
 /////////////////////////////////////////////////
 //    Check for a win
@@ -20,7 +21,7 @@ extern void checkWin();
 /////////////////////////////////////////////////
 //    Player versus Player
 /////////////////////////////////////////////////
-extern void pvp(char **board, int width, int height);
+extern void pvp(char **board, int width, int height, struct newPlayer *player);
 
 ////////////////////////////////////////////////
 //    Player versus Computer

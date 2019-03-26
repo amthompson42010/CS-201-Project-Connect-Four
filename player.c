@@ -7,15 +7,41 @@
  */
 
 #include "player.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-newPlayer* createPlayer()
+newPlayer* createPlayer(int x)
 {
     struct newPlayer* player = malloc(sizeof(struct newPlayer));
-    player->lastColumn = 0;
-    player->lastRow = 0;
+    char *pMove = malloc(x * 3 * sizeof(char));
+    player->move = pMove;
+    player->playerSymbol = 'O';
     player->score = 0;
 
     return player;
+}
+
+char *getPlayerMove(struct newPlayer* player)
+{
+    return player->move;
+}
+
+void setPlayerMove(char *move, int x, char playerSymbol)
+{
+    for(int i = 0; i < x * 3; i++)
+    {
+        move[i] = ' ';
+    }
+    move[1] = playerSymbol;
+}
+
+void printMove(char *move, int x)
+{
+    for(int i = 0; i < x * 3; i++)
+    {
+        printf("%c", move[i]);
+    }
+    printf("\n");
 }
 
 int getScore(struct newPlayer* player)
@@ -23,14 +49,9 @@ int getScore(struct newPlayer* player)
     return player->score;
 }
 
-int getLastRow(struct newPlayer* player)
+int getSymbol(struct newPlayer* player)
 {
-    return player->lastRow;
-}
-
-int getLastColumn(struct newPlayer* player)
-{
-    return player->lastColumn;
+    return player->playerSymbol;
 }
 
 void setScore(struct newPlayer* player, int score)
@@ -38,12 +59,19 @@ void setScore(struct newPlayer* player, int score)
     player->score = score;
 }
 
-void setLastRow(struct newPlayer* player, int row)
+void setPlayerSymbol(struct newPlayer* player, int playerNum)
 {
-    player->lastRow = row;
+    if(playerNum == 1)
+    {
+        player->playerSymbol = 'O';
+    }
+    else
+    {
+        player->playerSymbol = 'X';
+    }
 }
 
-void setLastColumn(struct newPlayer* player, int column)
-{
-    player->lastColumn = column;
+void updateMove(char *move, int currLocation, int newLocation, char playerSymbol) {
+    move[(currLocation * 3) + 1] = ' ';
+    move[(newLocation * 3) + 1] = playerSymbol;
 }
