@@ -26,3 +26,28 @@ cd CS-201-Project-Connect-Four
 ```
 
 run.sh is a shell script that will build and run the project.
+
+If you would like to not use the run.sh script, you may run the project as so:
+
+```
+cd CS-201-Project-Connect-Four
+make
+make run
+```
+or simply,
+```
+cd CS-201-Project-Connect-Four
+make run
+```
+
+Cleaning the Solution
+=====================
+
+You may clean the solution as so:
+```
+cd CS-201-Project-Connect-Four
+make clean
+```
+
+Playing the Game
+================
