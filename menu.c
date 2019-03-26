@@ -144,6 +144,11 @@ void setMode(struct Modes *newMode, int mode)
     newMode->mode = mode;
 }
 
+int getMode(struct Modes *newMode)
+{
+    return newMode->mode;
+}
+
 //////////////////////////////////////////////////////////////////////////////
 // Function to get what mode the player wants to play.
 // If the number 1 is selected, the player versus player option is set.

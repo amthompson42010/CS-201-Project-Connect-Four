@@ -7,6 +7,8 @@
  */
 
 #include "player.h"
+#include "adjacencyList.h"
+#include "board.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -74,4 +76,36 @@ void setPlayerSymbol(struct newPlayer* player, int playerNum)
 void updateMove(char *move, int currLocation, int newLocation, char playerSymbol) {
     move[(currLocation * 3) + 1] = ' ';
     move[(newLocation * 3) + 1] = playerSymbol;
+}
+
+void whosMove(int playerNum) {
+    printf("Player &d's turn", playerNum);
+}
+
+void displayScore(struct newPlayer *player, struct newPlayer *player2, int gameMode)
+{
+    if(gameMode == 1)
+    {
+        printf("\nPlayer 1 (O): %d vs Player 2 (X): %d\n", player->score, player2->score);
+    }
+    else
+    {
+        printf("\nPlayer 1 (O): %d vs Computer (X): %d\n", player->score, player2->score);
+    }
+}
+
+void playerMove(char **board, struct Modes *newMode, struct newPlayer *player, struct newPlayer *player2, struct Graph *graph, int width, int height, int whatPlayer, int mode) {
+    
+    int column, xPosition = 0;
+
+    if(whatPlayer == 1)
+    {
+        setPlayerMove(player->move, width, player->playerSymbol);
+        whosMove(whatPlayer);
+        printMove(player->move, width);
+        displayBoard(board, width, height);
+        displayScore(player, player2, newMode->mode);
+
+        // Now to get the column the user wants to drop their piece in and update the board
+    }
 }

@@ -32,18 +32,6 @@ int main()
     return 0;
 }
 
-void displayScore(int scoreOne, int scoreTwo, int gameMode)
-{
-    if(gameMode == 1)
-    {
-        printf("\nPlayer 1 (O): %d vs Player 2 (X): %d\n", scoreOne, scoreTwo);
-    }
-    else
-    {
-        printf("\nPlayer 1 (O): %d vs Computer (X): %d\n", scoreOne, scoreTwo);
-    }
-}
-
 ////////////////////////////////////////////////////////
 //   Function to handle the beginning remarks,
 //   as well as handling when the game modes
