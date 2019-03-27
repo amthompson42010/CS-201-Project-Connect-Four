@@ -13,6 +13,21 @@
 #include <string.h>
 #include "board.h"
 
+int isFull(char **board, int width)
+{
+    int checkForFull = 1;
+
+    for(int i = 0; i < width; i++)
+    {
+        if(board[0][(i * 3) + 1] == ' ')
+        {
+            checkForFull = 0;
+        }
+    }
+
+    return checkForFull;
+}
+
 char **createBoard(int width, int height)
 {
     char **board = malloc(height * sizeof(char *));

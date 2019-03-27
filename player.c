@@ -107,5 +107,6 @@ void playerMove(char **board, struct Modes *newMode, struct newPlayer *player, s
         displayScore(player, player2, newMode->mode);
 
         // Now to get the column the user wants to drop their piece in and update the board
+        
     }
 }

@@ -1,4 +1,4 @@
-int horizontalWin(char **board, int width, int height, char playerSymbol)
+int horizontalWin(char **board, int width, int height, int whatPlayer)
 {
     // Variable to keep track of how many pieces in a row
     int numOfPieces = 0;
@@ -8,7 +8,7 @@ int horizontalWin(char **board, int width, int height, char playerSymbol)
     {
         for(int j = 0; j < width; j++)
         {
-            if(board[i][(j * 3) + 1] == playerSymbol)
+            if(board[i][(j * 3) + 1] == (whatPlayer + '0'))
             {
                 numOfPieces++;
             }
@@ -28,7 +28,7 @@ int horizontalWin(char **board, int width, int height, char playerSymbol)
     return 0;
 }
 
-int verticalWin(char **board, int width, int height, char playerSymbol)
+int verticalWin(char **board, int width, int height, int whatPlayer)
 {
     // Variable to keep track of how many pieces are in a row
     int numOfPieces = 0;
@@ -38,7 +38,7 @@ int verticalWin(char **board, int width, int height, char playerSymbol)
     {
         for(int j = 0; j < height; j++)
         {
-            if(board[j][(i * 3) + 1] == playerSymbol)
+            if(board[j][(i * 3) + 1] == (whatPlayer + '0'))
             {
                 numOfPieces++;
             }

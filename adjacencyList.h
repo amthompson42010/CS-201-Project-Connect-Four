@@ -22,6 +22,7 @@ typedef struct node
 typedef struct Graph
 {
     int numVertices;
+    int *vistedNodes;
     struct node** adjLists;
 } Graph;
 
@@ -29,5 +30,6 @@ extern node* createNode(int);
 extern Graph* createGraph(int vertices);
 extern void addEdge(struct Graph* graph, int src, int dest);
 extern void printGraph(struct Graph* graph);
+int DepthFirstSearch(struct Graph *graph, int vertex);
 
 #endif

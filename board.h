@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 
+extern int isFull(char **board, int width);
 extern char **createBoard(int width, int height);
 extern void displayBoard(char **board, int width, int height);
 

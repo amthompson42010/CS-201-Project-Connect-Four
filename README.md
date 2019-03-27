@@ -51,3 +51,5 @@ make clean
 
 Playing the Game
 ================
+
+Make sure your terminal is in full screen mode for best playing scale.

@@ -23,7 +23,6 @@ struct node* createNode(int v)
     return newNode;
 }
  
-
 struct Graph* createGraph(int vertices)
 {
     struct Graph* graph = malloc(sizeof(struct Graph));
@@ -65,4 +64,24 @@ void printGraph(struct Graph* graph)
         }
         printf("\n");
     }
+}
+
+int DepthFirstSearch(struct Graph *graph, int vertex)
+{
+    struct node *adjList = graph->adjLists[vertex];
+    struct node *copyOfAdjacencyList = adjList;
+
+    while(copyOfAdjacencyList != NULL)
+    {
+        graph->vistedNodes[vertex] = 1;
+        int vertexConnection = copyOfAdjacencyList->vertex;
+        if(graph->vistedNodes[vertexConnection] == 0)
+        {
+            return 1 + DepthFirstSearch(graph, vertexConnection);
+        }
+
+        copyOfAdjacencyList = copyOfAdjacencyList->next;
+    }
+
+    return 0;
 }
