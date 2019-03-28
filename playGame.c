@@ -1,9 +1,18 @@
+/**
+ * 
+ *  Created by Alexander Mark Thompson
+ * 
+ *  File to handle main game flow of Connect Four.
+ * 
+ */ 
+
+#include "playGame.h"
 #include "menu.h"
 #include "board.h"
 #include "adjacencyList.h"
 #include "player.h"
 #include "gameState.h"
-#include "playGame.h"
+
 
 void winner(int whatPlayer)
 {
@@ -25,17 +34,16 @@ void start(struct Modes *newMode)
     int width = newMode->width;
     int height = newMode->height;
     int mode = newMode->mode;
+    int playerOneScore = 0;
+    int playerTwoScore = 0;
+    int z = 0;
 
     int isWin = 0;
 
     char **board = createBoard(width, height);
     
-    newPlayer *playerOne = createPlayer(width);
-    char *move = playerOne->move;
-    newPlayer *playerTwo = createPlayer(width);
-    char *move2 = playerTwo->move;
-    newPlayer *computer = createPlayer(width);
-    char *move3 = computer->move;
+    newPlayer *player = createPlayer(width);
+    char *move = player->move;
 
     Graph *oneGraph = createGraph(width * height);
     Graph *twoGraph = createGraph(width * height);
@@ -50,7 +58,34 @@ void start(struct Modes *newMode)
         else if(!isGameWon(board, width, height, 2))
         {
             //playerMove(board, move, oneGraph, width, height, 2);
+            playerMove(board, newMode, player, oneGraph, width, height, 1, playerOneScore, playerTwoScore);
+            if(isFull(board, width))
+            {
+                isWin = 1;
+                tie();
+            }
+            else if(!isGameWon(board, width, height, 1) && mode == 1)
+            {
+                printf("CHECK");
+                playerMove(board, newMode, player, oneGraph, width, height, 2, playerOneScore, playerTwoScore);
+            }
+            else if (z == 1) {
+                printf("HIT");
+            }
+            else
+            {
+                isWin = 1;
+                printf("GOOD HIT");
+            }
+            
         }
+        else
+        {
+
+            isWin = 1;
+            printf("GOOD HIT");
+        }
+        
         
     }
 }

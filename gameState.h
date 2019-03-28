@@ -1,3 +1,11 @@
+/**
+ * 
+ *  Created by Alexander Mark Thompson
+ * 
+ *  Header File for gameState.c
+ * 
+ */
+
 #ifndef GAMESTATE_H_INCLUDED
 #define GAMESTATE_H_INCLUDED
 

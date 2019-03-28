@@ -9,14 +9,15 @@
 #include "adjacencyList.h"
 #include "board.h"
 #include "player.h"
+#include "gameModes.h"
+#include "playGame.h"
 
 /////////////////////////////////////////////////
 //    Player versus Player
 /////////////////////////////////////////////////
-void pvp(char **board, int width, int height, struct newPlayer *player)
+void pvp(char **board, struct Modes *mode, struct Graph *graph, int whatPlayer, int playerOneScore, int playerTwoScore, int width, int height, struct newPlayer *player)
 {
-    printMove(player->move, width);
-    displayBoard(board, width, height);
+    start(mode);
 }
 
 ////////////////////////////////////////////////

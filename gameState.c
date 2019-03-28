@@ -1,3 +1,16 @@
+/**
+ * 
+ *  Created by Alexander Mark Thompson
+ *  
+ *  File to handle win conditions for Connect Four.
+ * 
+ */
+
+#include <stdio.h>
+#include <string.h>
+////////////////////////////////////////////////////////////////////////////////////////////
+// Horizontal Win Check
+////////////////////////////////////////////////////////////////////////////////////////////
 int horizontalWin(char **board, int width, int height, int whatPlayer)
 {
     // Variable to keep track of how many pieces in a row
@@ -25,9 +38,14 @@ int horizontalWin(char **board, int width, int height, int whatPlayer)
         }
     }
 
+    printf("%d", numOfPieces);
+
     return 0;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Vertical Win Check
+/////////////////////////////////////////////////////////////////////////////////////////////
 int verticalWin(char **board, int width, int height, int whatPlayer)
 {
     // Variable to keep track of how many pieces are in a row

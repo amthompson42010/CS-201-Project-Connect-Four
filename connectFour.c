@@ -16,6 +16,7 @@
 #include "gameModes.h"
 #include "menu.h"
 #include "player.h"
+#include "adjacencyList.h"
 
 void mainRun(struct Modes *newMode);
 
@@ -50,9 +51,11 @@ void mainRun(struct Modes *newMode) {
 
     newPlayer *player = createPlayer(newMode->width);
 
+    Graph *graph = createGraph(newMode->width*newMode->height);
+
     if(newMode->mode == 1)
     {
-        pvp(board, newMode->width, newMode->height, player);
+        pvp(board, newMode, graph, 1, 0, 0, newMode->width, newMode->height, player);
     }
     else
     {

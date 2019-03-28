@@ -21,7 +21,7 @@ extern void checkWin();
 /////////////////////////////////////////////////
 //    Player versus Player
 /////////////////////////////////////////////////
-extern void pvp(char **board, int width, int height, struct newPlayer *player);
+extern void pvp(char **board, struct Modes *mode, struct Graph *graph, int whatPlayer, int playerOneScore, int playerTwoScore, int width, int height, struct newPlayer *player);
 
 ////////////////////////////////////////////////
 //    Player versus Computer

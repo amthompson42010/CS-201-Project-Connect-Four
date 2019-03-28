@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "board.h"
+#include "player.h"
 
 int isFull(char **board, int width)
 {
@@ -26,6 +27,11 @@ int isFull(char **board, int width)
     }
 
     return checkForFull;
+}
+
+void updateBoard(char **board, struct newPlayer *player, int x, int y, int xPos, int yPos, int playerNum) {
+    board[yPos][(xPos * 3) + 1] = playerNum + '0';
+    displayBoard(board, x, y);
 }
 
 char **createBoard(int width, int height)

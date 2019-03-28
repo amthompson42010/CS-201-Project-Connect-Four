@@ -28,22 +28,15 @@ char *getPlayerMove(struct newPlayer* player)
     return player->move;
 }
 
-void setPlayerMove(char *move, int x, char playerSymbol)
+void setPlayerMove(struct newPlayer *player, int x, char playerSymbol)
 {
+    char *move = player->move;
     for(int i = 0; i < x * 3; i++)
     {
         move[i] = ' ';
     }
     move[1] = playerSymbol;
-}
 
-void printMove(char *move, int x)
-{
-    for(int i = 0; i < x * 3; i++)
-    {
-        printf("%c", move[i]);
-    }
-    printf("\n");
 }
 
 int getScore(struct newPlayer* player)
@@ -73,40 +66,43 @@ void setPlayerSymbol(struct newPlayer* player, int playerNum)
     }
 }
 
-void updateMove(char *move, int currLocation, int newLocation, char playerSymbol) {
-    move[(currLocation * 3) + 1] = ' ';
+void updateMove(struct newPlayer *player, int newLocation, char playerSymbol) {
+    char *move = player->move;
     move[(newLocation * 3) + 1] = playerSymbol;
 }
 
 void whosMove(int playerNum) {
-    printf("Player &d's turn", playerNum);
+    printf("Player %d turn", playerNum);
 }
 
-void displayScore(struct newPlayer *player, struct newPlayer *player2, int gameMode)
+void displayScore(int playerOneScore, int playerTwoScore, int gameMode)
 {
     if(gameMode == 1)
     {
-        printf("\nPlayer 1 (O): %d vs Player 2 (X): %d\n", player->score, player2->score);
+        printf("\nPlayer 1 (O): %d vs Player 2 (X): %d\n", playerOneScore, playerTwoScore);
     }
     else
     {
-        printf("\nPlayer 1 (O): %d vs Computer (X): %d\n", player->score, player2->score);
+        printf("\nPlayer 1 (O): %d vs Computer (X): %d\n", playerOneScore, playerTwoScore);
     }
 }
 
-void playerMove(char **board, struct Modes *newMode, struct newPlayer *player, struct newPlayer *player2, struct Graph *graph, int width, int height, int whatPlayer, int mode) {
+void playerMove(char **board, struct Modes *newMode, struct newPlayer *player, struct Graph *graph, int width, int height, int whatPlayer, int playerOneScore, int playerTwoScore) {
     
-    int column, xPosition = 0;
+    int xPosition = 0;
+    int column = 0;
 
-    if(whatPlayer == 1)
-    {
-        setPlayerMove(player->move, width, player->playerSymbol);
-        whosMove(whatPlayer);
-        printMove(player->move, width);
-        displayBoard(board, width, height);
-        displayScore(player, player2, newMode->mode);
+    setPlayerSymbol(player, whatPlayer);
+    setPlayerMove(player, width, player->playerSymbol);
+    whosMove(whatPlayer);
+    displayBoard(board, width, height);
+    displayScore(playerOneScore, playerTwoScore, newMode->mode);
 
-        // Now to get the column the user wants to drop their piece in and update the board
-        
-    }
+    // Now to get the column the user wants to drop their piece in and update the board
+    printf("Enter a column that you would like to drop your piece: ");
+    scanf("%d", &column);
+
+    updateMove(player, column, player->playerSymbol);
+    updateBoard(board, player, width, height, column, (height - 1), whatPlayer);
+
 }
