@@ -43,9 +43,9 @@ void mainRun(struct Modes *newMode) {
 
     for(int k=0;k<3;k++)printf("\n");
 
+    mainModeOptions(newMode);
     getScreenWidth(newMode);
     getScreenHeight(newMode);
-    mainModeOptions(newMode);
 
     char **board = createBoard(newMode->width, newMode->height);
 

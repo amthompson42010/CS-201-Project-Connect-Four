@@ -29,7 +29,16 @@ void setScreenHeight(struct Modes *newMode, int y);
 // Simple welcome print
 /////////////////////////////////////////////////////////////////////////////
 void welcomeScreen() {
-    printf("Welcome to Thompson's Connect Four!");
+    printf(" ######   #######  ##    ## ##    ## ########  ######  ########    ########  #######  ##     ## ########\n");
+    printf("##    ## ##     ## ###   ## ###   ## ##       ##    ##    ##       ##       ##     ## ##     ## ##     ##\n");
+    printf("##       ##     ## ####  ## ####  ## ##       ##          ##       ##       ##     ## ##     ## ##     ##\n");
+    printf("##       ##     ## ## ## ## ## ## ## ######   ##          ##       ######   ##     ## ##     ## ########\n");
+    printf("##       ##     ## ##  #### ##  #### ##       ##          ##       ##       ##     ## ##     ## ##   ##\n");
+    printf("##    ## ##     ## ##   ### ##   ### ##       ##    ##    ##       ##       ##     ## ##     ## ##    ##\n");
+    printf(" ######   #######  ##    ## ##    ## ########  ######     ##       ##        #######   #######  ##     ##\n\n");
+
+    
+    printf("Created by Alexander Thompson");
 }
 
 int continueGame(int currWidth, int MAX_WIDTH) {

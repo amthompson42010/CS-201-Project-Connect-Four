@@ -66,7 +66,7 @@ void start(struct Modes *newMode)
             }
             else if(!isGameWon(board, width, height, 1) && mode == 1)
             {
-                printf("CHECK");
+                //printf("CHECK");
                 playerMove(board, newMode, player, oneGraph, width, height, 2, playerOneScore, playerTwoScore);
             }
             else if (z == 1) {

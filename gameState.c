@@ -92,14 +92,12 @@ int verticalWin(char **board, int width, int height, int whatPlayer)
  */
 int diagonalWin(char **board, int width, int height, int whatPlayer)
 {
-    int checkXPos = 0, checkYPos = 0, numOfPieces = 0;
-
     // LOOP 1
     // Starts a bottom left cell, and checks diagonally for the number of pieces
     // going towards the top right
     for(int i = 0; i < height; i++)
     {
-        checkYPos = i;
+        int checkXPos = 0, checkYPos = i, numOfPieces = 0;
         while(checkXPos < width && checkYPos < height)
         {
             if(board[checkYPos][(checkXPos * 3) + 1] == (whatPlayer + '0'))
@@ -128,7 +126,7 @@ int diagonalWin(char **board, int width, int height, int whatPlayer)
     // on the board.
     for(int i = 1; i < width; i++)
     {
-        checkXPos = i;
+        int checkXPos = i, checkYPos = 0, numOfPieces = 0;
 
         while(checkXPos < width && checkYPos < height)
         {
@@ -156,8 +154,9 @@ int diagonalWin(char **board, int width, int height, int whatPlayer)
     // Does the same thing as LOOP 1, but going towards top left for the diagonal.
     for(int i = 0; i < height; i++)
     {
-        checkXPos = width - 1;
-        checkYPos = i;
+        int checkXPos = width - 1;
+        int checkYPos = i;
+        int numOfPieces = 0;
 
         while(checkXPos >= 0 && checkYPos < height)
         {
@@ -175,7 +174,7 @@ int diagonalWin(char **board, int width, int height, int whatPlayer)
                 return 1;
             }
 
-            checkXPos++;
+            checkXPos--;
             checkYPos++;
             
         }
@@ -186,7 +185,7 @@ int diagonalWin(char **board, int width, int height, int whatPlayer)
     // Starting at width - 2, because the diagonal on width - 1 was already checked.
     for(int i = width -2; i > 0; i--)
     {
-        checkXPos = i;
+        int checkXPos = i; int checkYPos = 0; int numOfPieces = 0;
 
         while(checkXPos >= 0 && checkYPos < height)
         {
@@ -204,7 +203,7 @@ int diagonalWin(char **board, int width, int height, int whatPlayer)
                 return 1;
             }
 
-            checkXPos++;
+            checkXPos--;
             checkYPos++;
             
         }

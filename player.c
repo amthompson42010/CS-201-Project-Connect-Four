@@ -72,7 +72,7 @@ void updateMove(struct newPlayer *player, int newLocation, char playerSymbol) {
 }
 
 void whosMove(int playerNum) {
-    printf("Player %d turn", playerNum);
+    printf("\nPlayer %d's turn", playerNum);
 }
 
 void displayScore(int playerOneScore, int playerTwoScore, int gameMode)
@@ -91,8 +91,9 @@ void playerMove(char **board, struct Modes *newMode, struct newPlayer *player, s
     
     int xPosition = 0;
     int column = 0;
+    int exitCond = 0;
 
-    setPlayerSymbol(player, whatPlayer);
+    //setPlayerSymbol(player, whatPlayer);
     setPlayerMove(player, width, player->playerSymbol);
     whosMove(whatPlayer);
     displayBoard(board, width, height);
@@ -102,7 +103,7 @@ void playerMove(char **board, struct Modes *newMode, struct newPlayer *player, s
     printf("Enter a column that you would like to drop your piece: ");
     scanf("%d", &column);
 
-    updateMove(player, column, player->playerSymbol);
+    //updateMove(player, column, player->playerSymbol);
     updateBoard(board, player, width, height, column, (height - 1), whatPlayer);
 
 }

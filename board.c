@@ -30,8 +30,30 @@ int isFull(char **board, int width)
 }
 
 void updateBoard(char **board, struct newPlayer *player, int x, int y, int xPos, int yPos, int playerNum) {
-    board[yPos][(xPos * 3) + 1] = playerNum + '0';
-    displayBoard(board, x, y);
+    
+        if(board[0][(xPos * 3) + 1] == ' ')
+        {
+            int validSpace = 0;
+            while(!validSpace && yPos >= 0)
+            {
+                if(board[yPos][(xPos * 3) + 1] == ' ')
+                {
+                    validSpace = 1;
+                }
+                else
+                {
+                    yPos--;
+                }
+                
+            }
+            board[yPos][(xPos * 3) + 1] = playerNum + '0';
+
+        }
+        else
+        {
+            printf("This column space is full.\n");
+        }
+        
 }
 
 char **createBoard(int width, int height)
