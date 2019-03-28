@@ -1,7 +1,7 @@
 OBJSS = connectFour.o gameModes.o board.o adjacencyList.o menu.o player.o
 
-playGame: $(OBJSS)
-	gcc -Wall -Wextra -g -o playGame $(OBJSS)
+play: $(OBJSS)
+	gcc -Wall -Wextra -g -o play $(OBJSS)
 
 connectFour.o: connectFour.c gameModes.h menu.h player.h
 	gcc -Wall -Wextra -g -c connectFour.c

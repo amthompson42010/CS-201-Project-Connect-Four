@@ -73,5 +73,17 @@ void displayBoard(char **board, int width, int height){
 
         printf("\n");
     }
+    for(int k = 0; k < width; k++)
+    {
+        if(k <= 9)
+        {
+            printf(" %d ", k);
+        }
+        else
+        {
+            printf(" %d", k);
+        }
+        
+    }
     printf("\n\n");
 }
