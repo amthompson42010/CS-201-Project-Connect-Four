@@ -13,8 +13,8 @@
 
 struct Graph* createGraph(int vertices);
 void addEdge(struct Graph* graph, int src, int dest);
-void printGraph(struct Graph* graph);
- 
+
+// Creates a node for the graph to use
 struct node* createNode(int v)
 {
     struct node* newNode = malloc(sizeof(struct node));
@@ -22,7 +22,8 @@ struct node* createNode(int v)
     newNode->next = NULL;
     return newNode;
 }
- 
+
+// Creates an adjacency list graph
 struct Graph* createGraph(int vertices)
 {
     struct Graph* graph = malloc(sizeof(struct Graph));
@@ -36,7 +37,8 @@ struct Graph* createGraph(int vertices)
  
     return graph;
 }
- 
+
+// Adds an edge to the graph 
 void addEdge(struct Graph* graph, int src, int destination)
 {
     // Add edge from src to dest
@@ -45,6 +47,7 @@ void addEdge(struct Graph* graph, int src, int destination)
     graph->adjLists[src] = newNode;
 }
 
+// Updates the graph to connect all of the board pieces
 void updateGraph(struct Graph *graph, int src, int destination, int isMultiEdge)
 {
     if(isMultiEdge == 1)
@@ -57,23 +60,8 @@ void updateGraph(struct Graph *graph, int src, int destination, int isMultiEdge)
         addEdge(graph, destination, src);
     }
 }
- 
-void printGraph(struct Graph* graph)
-{
-    int v;
-    for (v = 0; v < graph->numVertices; v++)
-    {
-        struct node* temp = graph->adjLists[v];
-        printf("\n Adjacency list of vertex %d\n ", v);
-        while (temp)
-        {
-            printf("%d -> ", temp->vertex);
-            temp = temp->next;
-        }
-        printf("\n");
-    }
-}
 
+// Does a depth first search of the graph
 int DepthFirstSearch(struct Graph *graph, int vertex)
 {
     struct node *adjList = graph->adjLists[vertex];
@@ -94,6 +82,7 @@ int DepthFirstSearch(struct Graph *graph, int vertex)
     return 0;
 }
 
+// Translates the board pieces into the graph
 void boardToGraph(char **board, struct Graph *graph, int width, int height, int xPosition, int yPosition, int playerNum, int isMultiEdge)
 {
     // Directions from a board cell
@@ -139,6 +128,7 @@ void boardToGraph(char **board, struct Graph *graph, int width, int height, int 
     }
 }
 
+// Gets the graph current length
 int graphLength(struct Graph *graph, int vertex)
 {
     int gLength = 0;
@@ -154,6 +144,7 @@ int graphLength(struct Graph *graph, int vertex)
     return gLength;
 }
 
+// Sets the number of vertices that were visted
 void isVisited(struct Graph *graph)
 {
     int verticesCount = graph->numVertices;
@@ -164,6 +155,7 @@ void isVisited(struct Graph *graph)
     }
 }
 
+// Frees the adjacency list
 void freeAdjacencyList(struct Graph *graph, int vertex) {
     while(graph->adjLists[vertex] != NULL) {
         struct node *temp;
@@ -171,13 +163,4 @@ void freeAdjacencyList(struct Graph *graph, int vertex) {
         graph->adjLists[vertex] = temp->next;
         free(temp);
     }
-}
-
-void freeGraph(struct Graph *graph) {
-    free(graph->vistedNodes);
-    for(int i = 0; i < graph->numVertices; i++) {
-        freeAdjacencyList(graph, i);
-    }
-    free(graph->adjLists);
-    free(graph);
 }

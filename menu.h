@@ -20,7 +20,6 @@ typedef struct Modes {
 
 extern void mainModeOptions();
 extern void welcomeScreen();
-extern int getMode(struct Modes *newMode);
 extern void setMode(struct Modes *newMode, int mode);
 extern void getScreenWidth(struct Modes *newMode);
 extern void setScreenWidth(struct Modes *newMode, int x);

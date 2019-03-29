@@ -46,7 +46,6 @@ int playAgain()
         printf("\nThe input you have given is not a possible choice\n");
         getchar();
         again = playAgain();
-
     }
 
     return again;

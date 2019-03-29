@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Creates a player, allocating space
 newPlayer* createPlayer(int x)
 {
     struct newPlayer* player = malloc(sizeof(struct newPlayer));
@@ -25,63 +26,28 @@ newPlayer* createPlayer(int x)
     return player;
 }
 
-char *getPlayerMove(struct newPlayer* player)
-{
-    return player->move;
-}
-
+// Sets a player move equal to the player's piece
 void setPlayerMove(char *move, int x, char playerSymbol)
 {
-    //char *move = player->move;
     for(int i = 0; i < x * 3; i++)
     {
         move[i] = ' ';
     }
     move[1] = playerSymbol;
-
 }
 
-int getScore(struct newPlayer* player)
-{
-    return player->score;
-}
-
-int getSymbol(struct newPlayer* player)
-{
-    return player->playerSymbol;
-}
-
-void setScore(struct newPlayer* player, int score)
-{
-    player->score = score;
-}
-
+// Updates the score
 void updateScore(struct newPlayer* player)
 {
     player->score = player->score + 1;
 }
 
-void setPlayerSymbol(struct newPlayer* player, int playerNum)
-{
-    if(playerNum == 1)
-    {
-        player->playerSymbol = 'O';
-    }
-    else
-    {
-        player->playerSymbol = 2;
-    }
-}
-
-void updateMove(struct newPlayer *player, int newLocation, char playerSymbol) {
-    char *move = player->move;
-    move[(newLocation * 3) + 1] = playerSymbol;
-}
-
+// Display to tell who's move it is
 void whosMove(int playerNum) {
     printf("\nPlayer %d's turn", playerNum);
 }
 
+// Displays score
 void displayScore(int playerOneScore, int playerTwoScore, int gameMode)
 {
     if(gameMode == 1)
@@ -93,9 +59,10 @@ void displayScore(int playerOneScore, int playerTwoScore, int gameMode)
         printf("\nPlayer 1 (1): %d vs Computer (2): %d\n", playerOneScore, playerTwoScore);
     }
 }
+
+// Prompts user for what column they would like to drop their piece in
 int getColumn()
 {
-
     int column;
     // Now to get the column the user wants to drop their piece in and update the board
     printf("Enter a column that you would like to drop your piece: ");
@@ -109,10 +76,10 @@ int getColumn()
         column = getColumn();
     }
     
-    
     return column;
 }
 
+// Executed when it is a players turn. Sets the player move, updates the board with the player's piece, and displays boar. Also creates a graph of the player's moves.
 void playerMove(char **board, struct Modes *newMode, struct Graph *graph, struct newPlayer *player, int width, int height, int whatPlayer, int playerOneScore, int playerTwoScore) {
     
     setPlayerMove(player->move, width, player->playerSymbol);
@@ -128,6 +95,7 @@ void playerMove(char **board, struct Modes *newMode, struct Graph *graph, struct
     }
 }
 
+// Does all of the setting and updating of moves and the board. Also creates a graph of the computer's moves.
 void makeCPUMove(char **board, char *playerMove, struct Graph *graph, int x, int y, int xPos, int yPos, int scoreOne, int scoreTwo, int mode) {
     setPlayerMove(playerMove, x, 1);
     updateBoard(board, xPos, yPos, 2);
@@ -136,6 +104,7 @@ void makeCPUMove(char **board, char *playerMove, struct Graph *graph, int x, int
     boardToGraph(board, graph, x, y, xPos, yPos, 2, 2);
 }
 
+// Executed when it is the computer's turn.
 void CPUMove(char **board, char *playerMove, struct Graph *playerOneGraph, struct Graph *playerTwoGraph, int x, int y, int scoreOne, int scoreTwo, int mode) {
     int depthFirstSearchLengthOne, depthFirstSearchLengthTwo, graphLengthOne, graphLengthTwo;
     int maxLength1 = -1, maxLength2 = -1, maxgraphLengthOne = -1, maxgraphLengthTwo = -1;
@@ -157,7 +126,6 @@ void CPUMove(char **board, char *playerMove, struct Graph *playerOneGraph, struc
                     boardToGraph(board, playerOneGraph, x, y, i, currYPos, 1, 1);
                     depthFirstSearchLengthOne = DepthFirstSearch(playerOneGraph, (x * currYPos) + i);
                     graphLengthOne = graphLength(playerOneGraph, (x * currYPos) + i);
-                    printGraph(playerOneGraph);
                     isVisited(playerOneGraph);
                     freeAdjacencyList(playerOneGraph, (x * currYPos) + i);
 

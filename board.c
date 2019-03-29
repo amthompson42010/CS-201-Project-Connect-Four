@@ -14,6 +14,7 @@
 #include "board.h"
 #include "player.h"
 
+// Checks if the board is full for a tie game condition
 int isFull(char **board, int width)
 {
     int checkForFull = 1;
@@ -29,35 +30,35 @@ int isFull(char **board, int width)
     return checkForFull;
 }
 
+// Updates the board to include the player's piece
 void updateBoard(char **board, int xPos, int yPos, int playerNum) {
 
-    
-    
-        if(board[0][(xPos * 3) + 1] == ' ')
+    if(board[0][(xPos * 3) + 1] == ' ')
+    {
+        int validSpace = 0;
+        while(!validSpace && yPos >= 0)
         {
-            int validSpace = 0;
-            while(!validSpace && yPos >= 0)
+            if(board[yPos][(xPos * 3) + 1] == ' ')
             {
-                if(board[yPos][(xPos * 3) + 1] == ' ')
-                {
-                    validSpace = 1;
-                }
-                else
-                {
-                    yPos--;
-                }
-                
+                validSpace = 1;
             }
-            board[yPos][(xPos * 3) + 1] = playerNum + '0';
+            else
+            {
+                yPos--;
+            }
+                
+        }
+        board[yPos][(xPos * 3) + 1] = playerNum + '0';
 
-        }
-        else
-        {
-            printf("This space is full.\n");
-        }
+    }
+    else
+    {
+        printf("This space is full.\n");
+    }
         
 }
 
+// Creates the board, allocating space
 char **createBoard(int width, int height)
 {
     char **board = malloc(height * sizeof(char *));
@@ -92,6 +93,7 @@ char **createBoard(int width, int height)
     return board;
 }
 
+// Displays the board
 void displayBoard(char **board, int width, int height){
     printf("\n");
     for(int i = 0; i < height; i++)

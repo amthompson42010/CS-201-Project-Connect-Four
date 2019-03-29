@@ -41,25 +41,6 @@ void welcomeScreen() {
     printf("Created by Alexander Thompson");
 }
 
-int continueGame(int currWidth, int MAX_WIDTH) {
-    int cont;
-    printf("Warning: %d makes the scale off.\n It is recommended that a number less than or equal to %d.\n Do you want to continue? (y = yes, n = no) ", currWidth, MAX_WIDTH);
-    scanf("%d", &cont);
-
-    if(cont == 'y')
-    {
-        return 1;
-    }
-    else if(cont == 'n')
-    {
-        return 2;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 // Function that prompts the user for the width of the board.
 ///////////////////////////////////////////////////////////////////////////////
@@ -146,10 +127,6 @@ void setMode(struct Modes *newMode, int mode)
     newMode->mode = mode;
 }
 
-int getMode(struct Modes *newMode)
-{
-    return newMode->mode;
-}
 
 //////////////////////////////////////////////////////////////////////////////
 // Function to get what mode the player wants to play.

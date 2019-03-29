@@ -20,15 +20,10 @@ typedef struct newPlayer {
 } newPlayer;
 
 extern newPlayer* createPlayer(int x);
-extern int getScore(struct newPlayer* player);
-extern void setScore(struct newPlayer* player, int score);
-extern char *getPlayerMove(struct newPlayer* player);
 extern void updateScore(struct newPlayer* player);
 extern void setPlayerMove(char *move, int x, char playerSymbol);
 extern void getPlayerSymbol(struct newPlayer *player);
-extern void setPlayerSymbol(struct newPlayer* player, int playerNum);
 extern void printMove(struct newPlayer *player, int x);
-extern void updateMove(struct newPlayer *player, int newLocation, char playerSymbol);
 extern void playerMove(char **board, struct Modes *newMode, struct Graph *graph, struct newPlayer *player, int width, int height, int whatPlayer, int playerOneScore, int playerTwoScore);
 extern void whosMove(int playerNum);
 extern void CPUMove(char **board, char *playerMove, struct Graph *playerOneGraph, struct Graph *playerTwoGraph, int x, int y, int scoreOne, int scoreTwo, int mode);

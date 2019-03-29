@@ -14,22 +14,25 @@
 #include "gameState.h"
 #include "gameModes.h"
 
-
+// Winner Message
 void winner(int whatPlayer)
 {
     printf("Player %d, you have won!\n\n", whatPlayer);
 }
 
+// Tie Game Message
 void tie()
 {
     printf("The board is now full, there are no more available moves.\n");
     printf("The game is a tie!");
 }
 
+// Check to see if one of the win conditions were met
 int isGameWon(char **board, int width, int height, int playerID) {
     return (horizontalWin(board, width, height, playerID) || verticalWin(board, width, height, playerID) || diagonalWin(board, width, height, playerID));
 }
 
+// Starts the game
 void start(struct Modes *newMode, int score1, int score2)
 {
     int width = newMode->width;
