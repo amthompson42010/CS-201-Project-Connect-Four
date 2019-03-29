@@ -95,6 +95,7 @@ void start(struct Modes *newMode, int score1, int score2)
         {
 
             isWin = 1;
+            player2->score = score2;
             updateScore(player2);
             winner(2);
             displayScore(score1, score2, newMode->mode);

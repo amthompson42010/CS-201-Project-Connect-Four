@@ -110,3 +110,8 @@ Once a player wins they will see a message like the following image asking if th
 ![alt text](https://github.com/amthompson42010/CS-201-Project-Connect-Four/raw/master/readmePics/continue.PNG "Continue")
 
 Here simply select 1 to play again in which the score will be updated, or select 2, exiting the current game session and clearing the score.
+
+Video Tutorial
+==============
+
+https://youtu.be/-PqihiHAdW4
