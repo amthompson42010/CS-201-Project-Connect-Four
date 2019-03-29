@@ -30,6 +30,11 @@ extern node* createNode(int);
 extern Graph* createGraph(int vertices);
 extern void addEdge(struct Graph* graph, int src, int dest);
 extern void printGraph(struct Graph* graph);
-int DepthFirstSearch(struct Graph *graph, int vertex);
+extern int DepthFirstSearch(struct Graph *graph, int vertex);
+extern void boardToGraph(char **board, struct Graph *graph, int width, int height, int xPosition, int yPosition, int playerNum, int isMultiEdge);
+extern int graphLength(struct Graph *graph, int vertex);
+extern void isVisited(struct Graph *graph);
+extern void freeAdjacencyList(struct Graph *graph, int vertex); 
+extern void freeGraph(struct Graph *graph);
 
 #endif

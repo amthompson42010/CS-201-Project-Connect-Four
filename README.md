@@ -1,4 +1,4 @@
-# Thompson's Connect Four Game
+# Alex Thompson's Connect Four Game
 
 Installation
 ============
@@ -52,4 +52,11 @@ make clean
 Playing the Game
 ================
 
-Make sure your terminal is in full screen mode for best playing scale.
+It is recommended to make the terminal full screen so that large boards may render.
+
+If you chose the option above to run the application via the script, then the game automatically boots up.
+If you chose the option to not run the script, then folling the run game instructions "make run" will boot up the game.
+
+Which ever method you chose to run the game the terminal should now display:
+
+![alt text](https://github.com/amthompson42010/CS-201-Project-Connect-Four/readmePics/mainMenu.PNG "Main Menu")

@@ -76,31 +76,24 @@ void getScreenWidth(struct Modes *newMode) {
     // Check to make sure x contains a number and not a letter
     if(x != 0)
     {
-        if(x > MAX_WIDTH)
-        {
-            int cont = continueGame(x, MAX_WIDTH);
-            if(cont == 1)
-            {
-                setScreenWidth(newMode, x);
-            }
-            else if(cont == 2)
-            {
-                getScreenWidth(newMode);
-            }
-        }
-        else if(x >= 4)
+        if(x >= 4)
         {
             setScreenWidth(newMode, x);
+            
+            if(x > MAX_WIDTH)
+            {
+                printf("\nWarning: Due to x being greater than %d, the board may not render properly for a standard terminal.\n", MAX_WIDTH);
+            }
         }
         else
         {
-            printf("You entered a negative number, please enter a positive number.");
+            printf("The board must have a dimension greater than or equal to 4.\n");
             getScreenWidth(newMode);
         }
     }
     else
     {
-        printf("The format of what was entered was not a number.");
+        printf("The format of what was entered was not a number.\n");
         getScreenWidth(newMode);
     }
 }
@@ -172,8 +165,6 @@ void mainModeOptions(struct Modes *newMode) {
           "                                   -------------\n"              
           "                                   2-Player v Computer\n"
           "                                   -----------\n"
-          "                                   3-instruction\n"
-          "                                   -------------      "
           "                                   \n\n\n");
 
     printf("Please enter a number from the choices above: ");
@@ -183,7 +174,7 @@ void mainModeOptions(struct Modes *newMode) {
     if(mode != 0)
     {
         if(mode == 1 || mode == 2 || mode == 3)
-        {
+        { 
             setMode(newMode, mode);
         }
         else

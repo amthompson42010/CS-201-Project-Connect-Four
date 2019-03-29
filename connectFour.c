@@ -47,18 +47,16 @@ void mainRun(struct Modes *newMode) {
     getScreenWidth(newMode);
     getScreenHeight(newMode);
 
-    char **board = createBoard(newMode->width, newMode->height);
-
-    newPlayer *player = createPlayer(newMode->width);
-
-    Graph *graph = createGraph(newMode->width*newMode->height);
-
     if(newMode->mode == 1)
     {
-        pvp(board, newMode, graph, 1, 0, 0, newMode->width, newMode->height, player);
+        pvp(newMode);
+    }
+    else if(newMode->mode == 2)
+    {
+        pvc(newMode);
     }
     else
     {
-        printf("UH OH");
+        printf("You did not enter a mode option.");
     }
 }

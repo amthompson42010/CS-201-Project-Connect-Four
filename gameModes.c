@@ -15,39 +15,40 @@
 /////////////////////////////////////////////////
 //    Player versus Player
 /////////////////////////////////////////////////
-void pvp(char **board, struct Modes *mode, struct Graph *graph, int whatPlayer, int playerOneScore, int playerTwoScore, int width, int height, struct newPlayer *player)
+void pvp(struct Modes *mode)
 {
-    start(mode);
+    start(mode, 0, 0);
 }
 
 ////////////////////////////////////////////////
 //    Player versus Computer
 ////////////////////////////////////////////////
-// void pvc(int width, int height)
-// {
-//     // int column;
-//     // displayBoard(0, width, height);
-//     // printf("Please enter a column that you would like to drop your piece in from the options above:  ");
-//     // scanf("%d", &column);
-//     // displayBoard(column, width, height);
-// }
+void pvc(struct Modes *mode)
+{
+    start(mode, 0, 0);
+}
+
 
 ////////////////////////////////////////////////
-//    Game Instructions
+// Replay Options
 ////////////////////////////////////////////////
-void instructions()
+int playAgain()
 {
-    struct Graph* graph = createGraph(6);
-        addEdge(graph, 0, 1);
-        addEdge(graph, 0, 2);
-        addEdge(graph, 1, 2);
-        addEdge(graph, 1, 4);
-        addEdge(graph, 1, 3);
-        addEdge(graph, 5, 4);
-        addEdge(graph, 3, 4);
-        addEdge(graph, 8, 6);
-        addEdge(graph, 5, 1);
-        addEdge(graph, 2, 6);
+    int again;
+    printf("Would you like to play again? (1 = yes, 2 = no) ");
     
-        printGraph(graph);
+    if(scanf("%d", &again) == 1)
+    {
+        again = again;
+    }
+    else
+    {
+        printf("\nThe input you have given is not a possible choice\n");
+        getchar();
+        again = playAgain();
+
+    }
+
+    return again;
+   
 }

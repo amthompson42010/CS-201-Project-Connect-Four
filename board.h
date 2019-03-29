@@ -13,7 +13,7 @@
 #include "player.h"
 
 extern int isFull(char **board, int width);
-void updateBoard(char **board, struct newPlayer *player, int x, int y, int xPos, int yPos, int playerNum);
+void updateBoard(char **board, int xPos, int yPos, int playerNum);
 extern char **createBoard(int width, int height);
 extern void displayBoard(char **board, int width, int height);
 

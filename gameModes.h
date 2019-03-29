@@ -21,16 +21,13 @@ extern void checkWin();
 /////////////////////////////////////////////////
 //    Player versus Player
 /////////////////////////////////////////////////
-extern void pvp(char **board, struct Modes *mode, struct Graph *graph, int whatPlayer, int playerOneScore, int playerTwoScore, int width, int height, struct newPlayer *player);
+extern void pvp(struct Modes *mode);
 
 ////////////////////////////////////////////////
 //    Player versus Computer
 ////////////////////////////////////////////////
-extern void pvc(int width, int height);
+extern void pvc(struct Modes *mode);
 
-////////////////////////////////////////////////
-//    Game Instructions
-////////////////////////////////////////////////
-extern void instructions();
+extern int playAgain();
 
 #endif

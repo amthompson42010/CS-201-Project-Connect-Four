@@ -28,7 +28,7 @@ gameState.o: gameState.c gameState.h
 	gcc -Wall -Wextra -g -c gameState.c
 
 clean:
-	rm -f *.o
+	rm -f *.o play playGame
 
-run:
+run: play
 	./play

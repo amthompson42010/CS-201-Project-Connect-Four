@@ -29,7 +29,9 @@ int isFull(char **board, int width)
     return checkForFull;
 }
 
-void updateBoard(char **board, struct newPlayer *player, int x, int y, int xPos, int yPos, int playerNum) {
+void updateBoard(char **board, int xPos, int yPos, int playerNum) {
+
+    
     
         if(board[0][(xPos * 3) + 1] == ' ')
         {
@@ -51,7 +53,7 @@ void updateBoard(char **board, struct newPlayer *player, int x, int y, int xPos,
         }
         else
         {
-            printf("This column space is full.\n");
+            printf("This space is full.\n");
         }
         
 }

@@ -12,6 +12,7 @@
 #include "adjacencyList.h"
 #include "player.h"
 #include "gameState.h"
+#include "gameModes.h"
 
 
 void winner(int whatPlayer)
@@ -29,21 +30,20 @@ int isGameWon(char **board, int width, int height, int playerID) {
     return (horizontalWin(board, width, height, playerID) || verticalWin(board, width, height, playerID) || diagonalWin(board, width, height, playerID));
 }
 
-void start(struct Modes *newMode)
+void start(struct Modes *newMode, int score1, int score2)
 {
     int width = newMode->width;
     int height = newMode->height;
     int mode = newMode->mode;
-    int playerOneScore = 0;
-    int playerTwoScore = 0;
-    int z = 0;
+    
 
     int isWin = 0;
 
     char **board = createBoard(width, height);
     
     newPlayer *player = createPlayer(width);
-    char *move = player->move;
+    
+    newPlayer *player2 = createPlayer(width);
 
     Graph *oneGraph = createGraph(width * height);
     Graph *twoGraph = createGraph(width * height);
@@ -57,25 +57,37 @@ void start(struct Modes *newMode)
         }
         else if(!isGameWon(board, width, height, 2))
         {
-            //playerMove(board, move, oneGraph, width, height, 2);
-            playerMove(board, newMode, player, oneGraph, width, height, 1, playerOneScore, playerTwoScore);
+            playerMove(board, newMode, oneGraph, player, width, height, 1, score1, score2);
             if(isFull(board, width))
             {
                 isWin = 1;
                 tie();
+                int again = playAgain();
+                if(again == 1)
+                {
+                    start(newMode, score1, score2);
+                }
             }
             else if(!isGameWon(board, width, height, 1) && mode == 1)
             {
-                //printf("CHECK");
-                playerMove(board, newMode, player, oneGraph, width, height, 2, playerOneScore, playerTwoScore);
+                playerMove(board, newMode, oneGraph, player, width, height, 2, score1, score2);   
             }
-            else if (z == 1) {
-                printf("HIT");
+            else if(!isGameWon(board, width, height, 1) && mode == 2) {
+                CPUMove(board, player->move, oneGraph, twoGraph, width, height, score1, score2, newMode->mode);
             }
             else
             {
                 isWin = 1;
-                printf("GOOD HIT");
+                player->score = score1;
+                updateScore(player);
+                winner(1);
+                displayScore(score1, score2, newMode->mode);
+                int again = playAgain();
+                if(again == 1)
+                {
+                    start(newMode, player->score, player2->score);
+                    
+                }
             }
             
         }
@@ -83,7 +95,14 @@ void start(struct Modes *newMode)
         {
 
             isWin = 1;
-            printf("GOOD HIT");
+            updateScore(player2);
+            winner(2);
+            displayScore(score1, score2, newMode->mode);
+            int again = playAgain();
+            if(again == 1)
+            {
+                start(newMode, player->score, player2->score);
+            }
         }
         
         

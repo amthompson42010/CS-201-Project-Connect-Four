@@ -38,8 +38,6 @@ int horizontalWin(char **board, int width, int height, int whatPlayer)
         }
     }
 
-    printf("%d", numOfPieces);
-
     return 0;
 }
 
