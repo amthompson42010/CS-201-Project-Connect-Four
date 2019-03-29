@@ -66,13 +66,13 @@ From this image, you can see that I have already entered in some choices.
 Here are the steps on this screen:
 
 1. Enter in an option for what mode you want to play.
-⋅⋅⋅1 is for the player versus player mode
-⋅⋅⋅2 is for the player versus computer mode
+    1 is for the player versus player mode
+    2 is for the player versus computer mode
 2. Enter in a width of the board that you want to play on.
-⋅⋅⋅There is no limit however, for boards with widths greater than 47 there is a message telling the user that the board may
-⋅⋅⋅not render properly for the size they entered.
+    There is no limit however, for boards with widths greater than 47 there is a message telling the user that the board may
+    not render properly for the size they entered.
 3. Enter in a height of the board that you want to play on.
-⋅⋅⋅There is no limit.
+    There is no limit.
 
 After steps 1-3 are complete the terminal will look like so:
 
