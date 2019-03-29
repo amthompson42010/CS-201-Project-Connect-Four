@@ -59,4 +59,4 @@ If you chose the option to not run the script, then folling the run game instruc
 
 Which ever method you chose to run the game the terminal should now display:
 
-![alt text](https://github.com/amthompson42010/CS-201-Project-Connect-Four/readmePics/mainMenu.PNG "Main Menu")
+![alt text](https://github.com/amthompson42010/CS-201-Project-Connect-Four/raw/master/readmePics/mainMenu.PNG "Main Menu")
